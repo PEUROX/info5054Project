@@ -191,28 +191,28 @@ function display_data(){
     echo  "<div class = 'container'>";
 		for($n = 0; $n < $post_len ; $n++){
 				
-		echo	"<div class = 'jumbotron' style = 'border-radius:0 50px 0 50px;'>";
+		echo	"<div class = 'jumbotron' style = 'border-radius:5px;'>";
 		echo 	"<div class='row'>";
 
 		echo		         "<div class='col-sm-8'>";
-		echo   		          "<p class = 'p-3 mb-2 border border-top-0'>Posted By : ".$posts[$n]['first_name']." ". $posts[$n]['last_name']."</p>";
+		echo   		          "<p class = 'p-3 mb-2 border border-top-0' style = 'background-color:white'>Posted By : ".$posts[$n]['first_name']." ". $posts[$n]['last_name']."</p>";
 	  echo		         "</div>";
 						 
 		echo	          "<div class='col-sm-4'>";
-		echo		   				 "<p class = 'p-3 mb-2 border border-top-0'>Date : ".$posts[$n]['approved_date']."</p>";
+		echo		   				 "<p class = 'p-3 mb-2 border border-top-0' style = 'background-color:white'>Date : ".$posts[$n]['approved_date']."</p>";
 		echo	 "</div>";
 
 		echo      "</div>";
 
 		echo 	"<div class='row'>";
 		echo		 "<div class='col-sm-12'>";
-		echo   		   "<b><p class = 'p-3 mb-2 border border-top-0 text-info'>".strtoupper($posts[$n]['post_heading'])."</p></b>";
+		echo   		   "<b><p style = 'background-color:white' class = 'p-3 mb-2 border border-top-0 text-info'>".strtoupper($posts[$n]['post_heading'])."</p></b>";
 		echo		 "</div>";
 		echo		 "</div>";
 
 		echo 	"<div class='row'>";
 		echo		 "<div class='col-sm-12'>";
-		echo   		   "<p class = 'p-3 mb-2 border border-bottom-0'>".$posts[$n]['contents']."</p>";
+		echo   		   "<p style = 'background-color:white' class = 'p-3 mb-2 border border-bottom-0'>".$posts[$n]['contents']."</p>";
 		echo		 "</div>";
 		echo		 "</div>";
 				break;
@@ -224,15 +224,15 @@ function display_data(){
 		echo  "<div class = 'container'>";
 		echo     "<center><h3 class = 'center text-white' >Find out about ".$posts[0]['post_heading']." </h3></center>";
 		for($i = 0; $i < $thread_len; $i++){
-			echo "<div id = 'thread".$i."' class = 'jumbotron' style = 'border-radius:0;margin-bottom:0;background-color:white;border-bottom:'solid black 1px;'>";
+			echo "<div id = 'thread".$i."' class = 'jumbotron' style = 'border-radius:5px;margin-bottom:1px;border-bottom:'solid black 1px;'>";
 
 			echo "<div class = 'row'>";
 			echo		 "<div class='col-sm-8'>";
-			echo   		   "<b><p class = 'p-3 mb-2 border border-top-0 text-dark'>Reply by : ".$thread[$i]['first_name'] ." ".$thread[$i]['last_name'] ."</p></b>";
+			echo   		   "<b><p style = 'background-color:white' class = 'p-3 mb-2 border border-top-0 text-dark'>Reply by : ".$thread[$i]['first_name'] ." ".$thread[$i]['last_name'] ."</p></b>";
 			echo		 "</div>";
 
 			echo		 "<div class='col-sm-4'>";
-			echo   		   "<b><p class = 'p-3 mb-2 border border-top-0 text-dark'>Date : ".$thread[$i]['thread_created_date'] ." ".$thread[$i]['last_name'] ."</p></b>";
+			echo   		   "<b><p style = 'background-color:white' class = 'p-3 mb-2 border border-top-0 text-dark'>Date : ".$thread[$i]['thread_created_date'] ."</p></b>";
 			echo		 "</div>";
 			echo "</div>";
 			echo "<div style = 'background-color:white;' class = ' p-3 mb-2 border border-top-0'>";
@@ -246,8 +246,8 @@ function display_data(){
 		
 ?>
 </section>
-    <div class = "container">
-		<div id = 'thread".$i."' class = 'jumbotron' style = 'background-color:white;border-radius:0;margin-top:10px;'>
+    <div class = "container" >
+		<div id = 'thread".$i."' class = 'jumbotron' style = 'background-color:white;border-radius:5px;margin-top:10px;'>
   <form method = "post">
            <h2 class = "text-dark">Start a new thread</h2>
 		   <textarea id = "threadArea" rows = '5' cols = '100' name="thread" class = "form-control"></textarea></br></br>
