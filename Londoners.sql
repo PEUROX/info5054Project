@@ -217,7 +217,7 @@ CREATE TABLE `user_type` (
 --
 -- Indexes for table `member_profile`
 --
-ALTER TABLE `member_profile`   
+ALTER TABLE `member_profile`
   ADD KEY `province_id` (`province_id`),
   ADD KEY `country_id` (`country_id`),
   ADD KEY `user_id` (`user_id`);
@@ -230,7 +230,7 @@ ALTER TABLE `member_profile`
 --
 -- Indexes for table `post_master`
 --
-ALTER TABLE `post_master`    
+ALTER TABLE `post_master`
   ADD KEY `member_id` (`member_id`),
   ADD KEY `category_id` (`category_id`),
   ADD KEY `location_id` (`location_id`),
@@ -240,7 +240,7 @@ ALTER TABLE `post_master`
 --
 -- Indexes for table `post_threads`
 --
-ALTER TABLE `post_threads`  
+ALTER TABLE `post_threads`
   ADD KEY `member_id` (`member_id`),
   ADD KEY `post_master_id` (`post_master_id`),
   ADD KEY `member_id_2` (`member_id`),
@@ -249,13 +249,13 @@ ALTER TABLE `post_threads`
 --
 -- Indexes for table `province`
 --
-ALTER TABLE `province`  
+ALTER TABLE `province`
   ADD KEY `country_id` (`country_id`);
 
 --
 -- Indexes for table `user`
 --
-ALTER TABLE `user`  
+ALTER TABLE `user`
   ADD KEY `user_type` (`user_type`),
   ADD KEY `created_by` (`created_by`);
 
@@ -317,13 +317,13 @@ ALTER TABLE `user`
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
--- set primary data 
+-- set primary data
 -- insert country
 insert into country values (Null,'CA', 'Canada');
 
 -- insert province
 INSERT INTO province (province_id, name, code,country_id)
-VALUES 
+VALUES
     (NULL, 'Alberta', 'AB',1),
     (NULL, 'British Columbia', 'BC',1),
     (NULL, 'Manitoba', 'MB',1),
