@@ -1,5 +1,5 @@
 body{
-	  background-color: #36445b;
+	  background-color: #f4f7fc;
     margin:5px;
 }
 
@@ -17,6 +17,14 @@ body{
 
 .jumbotron{
     border-radius: 10px;
+}
+
+.jumbotron p{
+	padding:2px;
+}
+
+.threadClass{
+	  margin-bottom: 10px;
 }
 /*body{
 	font-family: 'Titillium Web', sans-serif;

@@ -32,10 +32,14 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['new_thread'])){
 	}
 
 
+
+
 	?>
 <!doctype html>
 <html>
 <head>
+<!-- Font Awesome Icon Library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The londoners</title>
@@ -52,6 +56,13 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['new_thread'])){
   <script src="js/bootstrap.min.js"></script>
     <link rel = stylesheet href="index.css">
 </head>
+<!--CSS for stars-->
+<style>
+.checked {
+  color: grey;
+}
+</style>
+
 <body>
 
 <nav class="navbar navbar-expand-md bg-dark navbar-dark sticky-top">
@@ -185,91 +196,142 @@ function display_data(){
 		$thread_len = count($thread);
 		$post_len = count($posts);
 
-		echo "<div class = 'container'>";
-		echo     "<center><h1 class = 'center text-white'>Selected Post By ".$posts[0]['first_name']."</h1></center>";
-		echo "</div>";
+		?>
 
-    echo  "<div class = 'container'>";
-		for($n = 0; $n < $post_len ; $n++){
+		    <div class = 'container'>
+         		<center><h1 class = 'center' style = 'color:black;'>Selected Post By <?php echo $posts[0]['first_name']?></h1></center>
+		    </div>
 
-		echo	"<div class = 'jumbotron' style = 'border-radius:5px;'>";
-		echo 	"<div class='row'>";
 
-		echo		         "<div class='col-sm-8'>";
-		echo   		          "<p class = 'p-3 mb-2 border border-top-0' style = 'background-color:white'>Posted By : ".$posts[$n]['first_name']." ". $posts[$n]['last_name']."</p>";
-	  echo		         "</div>";
+   
+      <div class = 'container'>
 
-		echo	          "<div class='col-sm-4'>";
-		echo		   				 "<p class = 'p-3 mb-2 border border-top-0' style = 'background-color:white'>Date : ".$posts[$n]['approved_date']."</p>";
-		echo	 "</div>";
+		<?php for($n = 0; $n < $post_len ; $n++){ ?>
+		
+		<div class = 'jumbotron'  style = 'box-shadow: 2px 3px 3px grey;background-color:white;' style = 'border-radius:5px;'>
+		<div class='row'>
+	<div class='col-sm-9'>
+		<div class='row'>
+		     <div class='col-sm-5'>
+				   				 <p class = 'p-3 mb-2 border border-top-0' style = 'background-color:white'>Date : <?php echo $posts[$n]['approved_date'] ?> </p>
+			</div>
 
-		echo      "</div>";
+		        </div>
 
-		echo 	"<div class='row'>";
-		echo		 "<div class='col-sm-12'>";
-		echo   		   "<b><p style = 'background-color:white' class = 'p-3 mb-2 border border-top-0 text-info'>".strtoupper($posts[$n]['post_heading'])."</p></b>";
-		echo		 "</div>";
-		echo		 "</div>";
+		 	    <div class='row'>
+				 <div class='col-sm-12'>
+		   		   <b><p style = 'background-color:white' class = 'p-3 mb-2 border border-top-0 text-info'> <?php echo strtoupper($posts[$n]['post_heading']) ?> </p></b>
+				 </div>
+				 </div>
 
-		echo 	"<div class='row'>";
-		echo		 "<div class='col-sm-12'>";
-		echo   		   "<p style = 'background-color:white' class = 'p-3 mb-2 border border-bottom-0'>".$posts[$n]['contents']."</p>";
-		echo		 "</div>";
-		echo		 "</div>";
+		 	 <div class='row'>
+				 <div class='col-sm-12'>
+		   		   <p style = 'background-color:white' class = 'p-3 mb-2 border border-bottom-0'><?php echo $posts[$n]['contents'] ?> </p>
+				 </div>
+		</div>
+		   </div>
+		 <div class='col-sm-3'>
+
+				<div class = 'container' style = 'margin-top:30px;;text-align:center;'>
+							<img style = 'border-radius:500px 500px 500px 500px;height:100px;width:100px;' src = 'images/london.jpg'><br><br>
+							 <?php echo "Posted By: ".$posts[0]['first_name']."<br><br>";?>
+							 <span class="fa fa-star checked"></span>
+               <span class="fa fa-star checked"></span>
+               <span class="fa fa-star checked"></span>
+               <span class="fa fa-star"></span>
+               <span class="fa fa-star"></span>
+				</div>
+
+		</div>
+		 </div>
+<?php
 				break;
-		}
-		echo "</div>";
-    echo "</div>";
+		}?>
 
+		 </div>
+    </div>
+    
 
-		echo  "<div class = 'container'>";
-		echo     "<center><h3 class = 'center text-white' >Find out about ".$posts[0]['post_heading']." </h3></center>";
-		for($i = 0; $i < $thread_len; $i++){
-			echo "<div id = 'thread".$i."' class = 'jumbotron' style = 'border-radius:5px;margin-bottom:1px;border-bottom:'solid black 1px;'>";
+	  <div class = 'container'>
+		     <center><h3 class = 'center' style ='color:black;'>Find out about <?php echo $posts[0]['post_heading'] ?> </h3></center>
+		<?php for($i = 0; $i < $thread_len; $i++){?>
+			<div id = 'thread<?php echo $i ?>' class = 'jumbotron' style = 'background-color:white;border-radius:5px;box-shadow: 2px 3px 3px grey;margin-bottom:10px;border-bottom:solid black 1px;'>
 
-			echo "<div class = 'row'>";
-			echo		 "<div class='col-sm-8'>";
-			echo   		   "<b><p style = 'background-color:white' class = 'p-3 mb-2 border border-top-0 text-dark'>Reply by : ".$thread[$i]['first_name'] ." ".$thread[$i]['last_name'] ."</p></b>";
-			echo		 "</div>";
+			<div class='row'>
+	    <div class='col-sm-9'>
 
-			echo		 "<div class='col-sm-4'>";
-			echo   		   "<b><p style = 'background-color:white' class = 'p-3 mb-2 border border-top-0 text-dark'>Date : ".$thread[$i]['thread_created_date'] ."</p></b>";
-			echo		 "</div>";
-			echo "</div>";
-			echo "<div style = 'background-color:white;' class = ' p-3 mb-2 border border-top-0'>";
-			echo "<p style = 'padding:20px;' id = '".$i."' class = 'text-dark'>".$thread[$i]['thread_data']."</p>";
-			echo "</div>";
-	    echo     "<input type = 'button' style = 'margin-top:10px;margin-bottom:10px;' class = 'btn btn-primary' value = 'Reply' name = 'reply' id = 'reply".$i."'/>";
-			echo "<form  id = 'replyForm".$i."' method = 'post'>";
-			echo     "<textarea placeholder = 'Reply....'  id = 'threadArea".$i."' rows = '3' cols = '100' name='thread' class = ''></textarea></br></br>";
-			echo     "<input style = '' type = 'submit' id = 'postReply' name = 'postReply' value = 'Post' class = 'btn btn-primary' />";
-			 echo	"</form>";
+			<div class = 'row'>
+				 <div class='col-sm-8'>
+			   		   <b><p style = 'background-color:white' class = 'p-3 mb-2 border border-top-0 text-dark'>Reply by : <?php echo $thread[$i]['first_name'] ." ". $thread[$i]['last_name'] ?> </p></b>
+					 </div>
 
-			echo "</div>";
+					 <div class='col-sm-4'>
+			   		   <b><p style = 'background-color:white' class = 'p-3 mb-2 border border-top-0 text-dark'>Date : <?php echo $thread[$i]['thread_created_date'] ?> </p></b>
+					 </div>
+			 </div>
+			 <div style = 'background-color:white;' class = ' p-3 mb-2 border border-top-0'>
+			 <p style = 'padding:20px;' id ='<?php echo $i ?>' class = 'text-dark'> <?php echo $thread[$i]['thread_data'] ?></p>
+			 </div>
+	         <input type = 'button' style = 'margin-top:10px;margin-bottom:10px;' class = 'btn btn-primary' value = 'Comment' name = 'reply' id = 'reply<?php echo $i ?>'/>
+		
+			
+			 <form  id = 'replyForm<?php echo $i ?>' method = 'post' style = 'display:none;'>
+			     <textarea placeholder = 'Comment....'  id = 'threadArea<?php echo $i ?>' rows = '3' cols = '100' name='thread <?php echo $i ?>' class = ''></textarea></br></br>
+			     <input style = '' type = 'submit' id = 'postReply<?php echo $i ?>' name = 'postReply <?php echo $i ?>' value = 'Post' class = 'btn btn-primary' />
+			 	</form>
 
-             ?>
+     	<?php if(isset($_POST['postReply'.$i])){
+				echo $_POST['thread'.$i];
+			}?>
+
+			       
+			</div>
+			<div class='col-sm-3'>
+
+<div class = 'container' style = 'margin-top:30px;;text-align:center;'>
+			<img style = 'border-radius:500px 500px 500px 500px;height:100px;width:100px;' src = 'images/london.jpg'><br><br>
+			 <?php echo "Posted By: ".$posts[0]['first_name']."<br><br>";?>
+			 <span class="fa fa-star checked"></span>
+			 <span class="fa fa-star checked"></span>
+			 <span class="fa fa-star checked"></span>
+			 <span class="fa fa-star"></span>
+			 <span class="fa fa-star"></span>
+</div>
+
+</div>
+
+		</div>
+
+			</div>
 
              <script>
-             $("#reply" + <?php echo $i ?>).click(function(){
-                 if($("#replyForm"+<?php echo $i ?>).is(":visible")){
-                     $("#replyForm"+<?php echo $i ?>).hide(1000);
+
+              //jQuery code for comment section ajax communication
+
+							
+
+						 //jQuery code to hide and show reply form
+             $("#reply<?php echo $i ?>").click(function(){
+                 if($("#replyForm<?php echo $i ?>").is(":visible")){
+                     $("#replyForm<?php echo $i ?>").hide(1000);
                  }else{
-                     $("#replyForm"+<?php echo $i ?>).show(1000);
+                     $("#replyForm<?php echo $i ?>").show(1000);
                  }
              })
+
              </script>
 
              <?php
 
-		}
-		echo "</div>";
-	}
+		}?>
+		 </div>
+<?php	}?>
 
 ?>
 </section>
 
     <div class = "container" >
-		<div id = 'thread".$i."' class = 'jumbotron' style = 'background-color:white;border-radius:5px;margin-top:10px;'>
+		<div id = 'thread".$i."' class = 'jumbotron' style = 'box-shadow: 2px 3px 3px grey;background-color:white;border-radius:5px;margin-top:10px;'>
   <form method = "post">
         <h2 class = "text-dark">Start a new thread</h2>
 		   <textarea id = "threadArea" rows = '5' cols = '100' name="thread" class = "form-control"></textarea></br></br>
