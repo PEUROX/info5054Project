@@ -29,7 +29,33 @@ function getPostsByCategoryID($category_id){
 	$qry_post = "select * from post_master  pm
 				  left outer join member_profile mp
 				  on pm.member_id =mp.member_id"				
-				." where pm.category_id =".$category_id.";";
+				." where pm.category_id =".$category_id." order by pm.post_date DESC;";
+	$rs = $db_conn->query($qry_post);
+        // showQueryErrors($db_conn,$qry_post);
+	
+	dbdisconnect($db_conn);
+	return $rs;
+
+}
+
+function formPost_Delete($post_id)
+{
+	$db_conn = dbconnect(DBHOST, DBDB, DBUSER, DBPW);
+
+	$qry_post = "UPDATE post_master SET post_active = 'D' WHERE post_master_id =".$post_id.";" ;
+	$rs = $db_conn->query($qry_post);
+        // showQueryErrors($db_conn,$qry_post);
+	
+	dbdisconnect($db_conn);
+	return $rs;
+
+}
+
+function formPost_Archive($post_id)
+{
+	$db_conn = dbconnect(DBHOST, DBDB, DBUSER, DBPW);
+
+	$qry_post = "UPDATE post_master SET post_active = 'A' WHERE post_master_id =".$post_id.";" ;
 	$rs = $db_conn->query($qry_post);
         // showQueryErrors($db_conn,$qry_post);
 	

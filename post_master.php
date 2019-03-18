@@ -155,6 +155,8 @@ else
 
 
 
+
+
 function formDisplayPosts($category_id){
 
 
@@ -190,8 +192,28 @@ function formDisplayPosts($category_id){
 			</tr>
 			<tr>
 			
+			<td colspan =2>
+			
+			<?php 
+			     $_SESSION['user_type']  ='mbr';
+					 if ($_SESSION['user_type'] =='mbr') { 
+           $_SESSION['member_id']  ='1';
+             if ($_SESSION['member_id'] ==$row['member_id']) { ?>
+
+<a href = <?php formPostDelete($row['post_master_id']) ?>  name=  <?php echo 'btn_Delete'.$row['post_master_id'];?> >Delete </a> &nbsp;
+			       
+<a href = <?php formPostArchive($row['post_master_id']) ?>  name=  <?php echo 'btn_Archive'.$row['post_master_id'];?> >Archive </a>
+					<?php }} ?>
+       
+			
+			 </td>
+
+			</tr>
+			<tr>
+			
 			<td colspan =2><hr></td>
 			</tr>
+			
 <?php }} ?>
 
  
