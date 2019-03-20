@@ -15,7 +15,7 @@ session_start();
     <link rel="stylesheet" href="css/bootstrap.min.css">
   <script src="js/jquery.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
-    <link rel = stylesheet href="index.css">
+    <link rel = stylesheet href="css/index.css">
 </head>
 <body>
 <!--the first nav with login signup and logo-->
@@ -24,10 +24,10 @@ session_start();
  
     <ul class="nav navbar-nav ml-auto">
       <li class="nav-item">
-        <a class="nav-link" href="register.php"><span class="fas fa-user"></span> Sign Up</a>
+        <a class="nav-link" href="register_funcs/register.php"><span class="fas fa-user"></span> Sign Up</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="login.php"><span class="fas fa-sign-in-alt"></span> Login</a>
+        <a class="nav-link" href="register_funcs/login.php"><span class="fas fa-sign-in-alt"></span> Login</a>
       </li>
     </ul>
   </div>
@@ -59,10 +59,7 @@ session_start();
     </li>
   </ul>
 
-  <ul class="nav navbar-nav ml-auto">
-    <li class="nav-item">
-      <a class="nav-link" href="logout.php"><span class="fas fa-sign-in-alt"></span>Logout</a>
-    </li>
+  
   </ul>
 </div>
 </nav>
@@ -107,7 +104,7 @@ session_start();
             
             $_SESSION['category_id'] = $category[$i]['category_id'];
 			echo "<div id = 'category".$i."' class = 'jumbotron'>";
-			echo "<b><a href = 'post_master.php'> <p class = 'this'>".$category[$i]['name']."</p></a></b>";
+			echo "<b><a href = 'post_master/post_master.php'> <p class = 'this'>".$category[$i]['name']."</p></a></b>";
 			echo "<p class = 'this'><b>Date posted: </b>".$category[$i]['created_datetime']."</p>";
 			echo "<p id = '".$i."' class = 'text-muted'>".$category[$i]['description']."</p>";
 			echo "</div>";
